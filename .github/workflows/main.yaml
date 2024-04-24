@@ -1,0 +1,22 @@
+name: "Build iOS app"
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - name: Check Xcode version
+        run: /usr/bin/xcodebuild -version
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        run: xcodebuild test -scheme Demo -resultBundlePath TestResults
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: TestResults.xcresult
+        if: success() || failure()

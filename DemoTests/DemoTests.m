@@ -29,16 +29,25 @@
     XCTAssertTrue(success);
     
     NSMenu* menu;
+    NSMatrix* matrix;
     
     for (id element in topLevelObjects) {
         if ([element isKindOfClass:[NSMenu class]]) {
             menu = (NSMenu*)element;
-            break;
+        }
+        
+        if ([element isKindOfClass:[NSMatrix class]]) {
+            matrix = (NSMatrix*)element;
         }
     }
 
     XCTAssertNotNil(menu);
+    XCTAssertNotNil(matrix);
     
+    //
+    // Test NSMenuItem
+    //
+
     // Empty <modifierMask key="keyEquivalentModifierMask"/> node
     XCTAssertEqual([[menu itemAtIndex:0] keyEquivalentModifierMask], 0);
     // <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
@@ -58,6 +67,16 @@
     XCTAssertEqual([[menu itemAtIndex:7] keyEquivalentModifierMask], 0);
     // explicit modifier mask
     XCTAssertEqual([[menu itemAtIndex:8] keyEquivalentModifierMask], NSCommandKeyMask);
+
+    //
+    // Test NSButtonCell
+    //
+    NSArray* cells = [matrix cells];
+    XCTAssertEqual([[cells objectAtIndex:0] keyEquivalentModifierMask], NSCommandKeyMask | NSShiftKeyMask);
+    XCTAssertEqual([[cells objectAtIndex:1] keyEquivalentModifierMask], 0);
+    
+    // Unlike NSMenuItem, the default for NSButtonCell is 0
+    XCTAssertEqual([[cells objectAtIndex:2] keyEquivalentModifierMask], 0);
 }
 
 - (void)testPerformanceExample {

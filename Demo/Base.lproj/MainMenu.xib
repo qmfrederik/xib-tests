@@ -22,6 +22,20 @@
                 <menuItem title="Item 4" keyEquivalent="4" id="MenuItem4">
                     <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                 </menuItem>
+                <menuItem title="Item 5" keyEquivalent="5" id="MenuItem5"/>
+                <menuItem title="Item 6" id="MenuItem6"/>
+                <!-- same tests, but now with keyEquivalent node -->
+                <menuItem title="Item 7" id="MenuItem7">
+                    <string key="keyEquivalent" base64-UTF8="YES">CA</string>
+                </menuItem>
+                <menuItem title="Item 8" id="MenuItem8">
+                    <string key="keyEquivalent" base64-UTF8="YES">CA</string>
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Item 9" id="MenuItem9">
+                    <string key="keyEquivalent" base64-UTF8="YES">CA</string>
+                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                </menuItem>
             </items>
             <point key="canvasLocation" x="200" y="121"/>
         </menu>

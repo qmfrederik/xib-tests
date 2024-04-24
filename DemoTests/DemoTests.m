@@ -38,15 +38,26 @@
     }
 
     XCTAssertNotNil(menu);
-    NSMenuItem* item1 = [menu itemAtIndex:0];
-    NSMenuItem* item2 = [menu itemAtIndex:1];
-    NSMenuItem* item3 = [menu itemAtIndex:2];
-    NSMenuItem* item4 = [menu itemAtIndex:3];
     
-    XCTAssertEqual([item1 keyEquivalentModifierMask], 0);
-    XCTAssertEqual([item2 keyEquivalentModifierMask], NSShiftKeyMask);
-    XCTAssertEqual([item3 keyEquivalentModifierMask], NSCommandKeyMask);
-    XCTAssertEqual([item4 keyEquivalentModifierMask], NSAlternateKeyMask);
+    // Empty <modifierMask key="keyEquivalentModifierMask"/> node
+    XCTAssertEqual([[menu itemAtIndex:0] keyEquivalentModifierMask], 0);
+    // <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
+    XCTAssertEqual([[menu itemAtIndex:1] keyEquivalentModifierMask], NSShiftKeyMask);
+    // <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+    XCTAssertEqual([[menu itemAtIndex:2] keyEquivalentModifierMask], NSCommandKeyMask);
+    // <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+    XCTAssertEqual([[menu itemAtIndex:3] keyEquivalentModifierMask], NSAlternateKeyMask);
+    // No modifierMask element
+    XCTAssertEqual([[menu itemAtIndex:4] keyEquivalentModifierMask], NSCommandKeyMask);
+    // No modifierMask element and no keyEquivalent attribute
+    XCTAssertEqual([[menu itemAtIndex:5] keyEquivalentModifierMask], NSCommandKeyMask);
+    
+    // no modfierMask
+    XCTAssertEqual([[menu itemAtIndex:6] keyEquivalentModifierMask], NSCommandKeyMask);
+    // empty modifierMask
+    XCTAssertEqual([[menu itemAtIndex:7] keyEquivalentModifierMask], 0);
+    // explicit modifier mask
+    XCTAssertEqual([[menu itemAtIndex:8] keyEquivalentModifierMask], NSCommandKeyMask);
 }
 
 - (void)testPerformanceExample {

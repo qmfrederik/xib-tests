@@ -43,10 +43,10 @@
     NSMenuItem* item3 = [menu itemAtIndex:2];
     NSMenuItem* item4 = [menu itemAtIndex:3];
     
-    NSLog(@"Item 1 modifier mask: 0x%02lx", [item1 keyEquivalentModifierMask]);
-    NSLog(@"Item 2 modifier mask: 0x%02lx", [item2 keyEquivalentModifierMask]);
-    NSLog(@"Item 3 modifier mask: 0x%02lx", [item3 keyEquivalentModifierMask]);
-    NSLog(@"Item 4 modifier mask: 0x%02lx", [item4 keyEquivalentModifierMask]);
+    XCTAssertEqual([item1 keyEquivalentModifierMask], 0);
+    XCTAssertEqual([item2 keyEquivalentModifierMask], NSShiftKeyMask);
+    XCTAssertEqual([item3 keyEquivalentModifierMask], NSCommandKeyMask);
+    XCTAssertEqual([item4 keyEquivalentModifierMask], NSAlternateKeyMask);
 }
 
 - (void)testPerformanceExample {

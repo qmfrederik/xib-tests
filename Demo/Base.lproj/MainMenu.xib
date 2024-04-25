@@ -39,6 +39,21 @@
             </items>
             <point key="canvasLocation" x="200" y="121"/>
         </menu>
+
+        <matrix id="matrix">
+            <cells>
+                <column>
+                    <buttonCell type="push" title="Cell" id="cell1">
+                        <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                    </buttonCell>
+                    <buttonCell type="push" title="Cell" id="cell2">
+                        <modifierMask key="keyEquivalentModifierMask" />
+                    </buttonCell>
+                    <buttonCell type="push" title="Cell" id="cell3"/>
+                </column>
+            </cells>
+        </matrix>
+
         <window title="Demo" animationBehavior="default" id="QvC-M9-y7g"/>
     </objects>
 </document>

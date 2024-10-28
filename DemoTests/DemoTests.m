@@ -87,19 +87,21 @@
     
     NSMenu* menu;
     NSMatrix* matrix;
+    NSBox* box;
     
     for (id element in topLevelObjects) {
         if ([element isKindOfClass:[NSMenu class]]) {
             menu = (NSMenu*)element;
-        }
-        
-        if ([element isKindOfClass:[NSMatrix class]]) {
+        } else if ([element isKindOfClass:[NSMatrix class]]) {
             matrix = (NSMatrix*)element;
+        } else if ([element isKindOfClass:[NSBox class]]) {
+            box = (NSBox*)element;
         }
     }
 
     XCTAssertNotNil(menu);
     XCTAssertNotNil(matrix);
+    XCTAssertNotNil(box);
     
     //
     // Test NSMenuItem
@@ -134,6 +136,16 @@
     
     // Unlike NSMenuItem, the default for NSButtonCell is 0
     XCTAssertEqual([[cells objectAtIndex:2] keyEquivalentModifierMask], 0);
+
+    //
+    // Test NSBox
+    //
+    NSColor* color = [box fillColor];
+    XCTAssertEqual(0.87058823529999996, [color redComponent]);
+    XCTAssertEqual(0.87058823529999996, [color greenComponent]);
+    XCTAssertEqual(0.87058823529999996, [color blueComponent]);
+    XCTAssertEqual(1, [color alphaComponent]);
+    XCTAssertEqual(NSCustomColorSpace, [color colorSpaceName]);
 }
 
 - (void)testPerformanceExample {

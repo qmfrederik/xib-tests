@@ -56,10 +56,8 @@
 
         <window title="Demo" animationBehavior="default" id="QvC-M9-y7g"/>
         
-        <customView id="view-srgb">
-            <box fixedFrame="YES" boxType="custom" borderType="none" borderWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="8C3-TQ-vdy" userLabel="Box for background color">
-                <color key="fillColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            </box>
-        </customView>
+        <box fixedFrame="YES" boxType="custom" borderType="none" borderWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="8C3-TQ-vdy" userLabel="Box for background color">
+            <color key="fillColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </box>
     </objects>
 </document>
